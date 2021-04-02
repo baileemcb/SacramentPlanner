@@ -1,4 +1,4 @@
-using ContosoUniversity.Data;
+using SacramentPlanner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

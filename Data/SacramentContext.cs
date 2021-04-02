@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using SacramentPlanner.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ContosoUniversity.Data
+namespace SacramentPlanner.Data
 {
     public class SacramentContext : DbContext
     {
