@@ -14,6 +14,8 @@ namespace SacramentPlanner.Controllers
     {
         private readonly SacramentContext _context;
 
+        public SelectList Meetings { get; private set; }
+
         public SpeakersController(SacramentContext context)
         {
             _context = context;
@@ -46,6 +48,18 @@ namespace SacramentPlanner.Controllers
         // GET: Speakers/Create
         public IActionResult Create()
         {
+
+            //var meetQuery = from m in _context.Meetings orderby m.Date select m.ID;
+            //Meetings = new SelectList(await meetQuery.Distinct().ToListAsync());
+
+            IQueryable<int> meetingQuery = from m in _context.Meetings
+                                              orderby m.Date
+                                              select m.ID;
+            IQueryable distinct = meetingQuery.Distinct();
+
+            ViewData["Meetings"] = new SelectList(distinct);
+
+
             return View();
         }
 
@@ -54,8 +68,13 @@ namespace SacramentPlanner.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,name,subject")] Speaker speaker)
+        public async Task<IActionResult> Create([Bind("ID,name,subject,MeetingID")] Speaker speaker)
         {
+
+            var meetQuery = from m in _context.Meetings orderby m.Date select m.ID;
+            Meetings = new SelectList(await meetQuery.Distinct().ToListAsync());
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(speaker);
@@ -68,6 +87,15 @@ namespace SacramentPlanner.Controllers
         // GET: Speakers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
+            IQueryable<int> meetingQuery = from m in _context.Meetings
+                                           orderby m.Date
+                                           select m.ID;
+            IQueryable distinct = meetingQuery.Distinct();
+
+            ViewData["Meetings"] = new SelectList(distinct);
+
+
             if (id == null)
             {
                 return NotFound();
@@ -86,7 +114,7 @@ namespace SacramentPlanner.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,name,subject")] Speaker speaker)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,name,subject,MeetingID")] Speaker speaker)
         {
             if (id != speaker.ID)
             {

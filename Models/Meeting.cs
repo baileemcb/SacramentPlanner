@@ -14,26 +14,41 @@ namespace SacramentPlanner.Models
 
         [Required]
         [Display(Name = "Opening Prayer")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string OpeningPrayer { get; set; }
 
         [Required]
         [Display(Name = "Closing Prayer")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string ClosingPrayer { get; set; }
 
         [Required]
         [Display(Name = "Opening Song")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string OpeningSong { get; set; }
 
         [Required]
         [Display(Name = "Sarcrament Song")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string SacramentSong { get; set; }
 
         [Required]
         [Display(Name = "Closing Song")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string ClosingSong { get; set; }
 
         [Display(Name = "Special Song")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string SpecialSong { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string Conductor { get; set; }
 
         public int? SpeakerID { get; set; }

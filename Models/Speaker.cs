@@ -13,12 +13,16 @@ namespace SacramentPlanner.Models
 
         [Required]
         [Display(Name = "Speaker Name")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(60, MinimumLength = 3)]
         public string name { get; set; }
 
         [Required]
         [Display(Name = "Speaker Subject")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [StringLength(100, MinimumLength = 3)]
         public string subject { get; set; }
 
-        public int MeetingID { get; set; }
+        public int? MeetingID { get; set; }
     }
 }

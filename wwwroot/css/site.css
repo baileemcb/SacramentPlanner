@@ -7,21 +7,26 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+header {
+    background-color: paleturquoise;
+    color: black;
+}
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: black;
+    background-color: paleturquoise;
+    border-color: paleturquoise;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: black;
 }
 
 /* Sticky footer styles
@@ -59,8 +64,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: 'Roboto Mono', monospace;
+    background-color: paleturquoise;
+    color: black;
 }
 .footer {
   position: absolute;

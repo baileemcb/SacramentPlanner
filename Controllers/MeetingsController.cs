@@ -28,6 +28,18 @@ namespace SacramentPlanner.Controllers
         // GET: Meetings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+
+            IQueryable<string> speakersQuery = from m in _context.Speakers
+                                               orderby m.name
+                                               where m.MeetingID == id
+                                               select m.name;
+
+            IQueryable distinct = speakersQuery.Distinct();
+
+            ViewData["Speakers"] = distinct;
+
+
+
             if (id == null)
             {
                 return NotFound();
