@@ -18,5 +18,7 @@ namespace SacramentPlanner.Models
         [Required]
         [Display(Name = "Speaker Subject")]
         public string subject { get; set; }
+
+        public int MeetingID { get; set; }
     }
 }

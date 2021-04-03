@@ -52,10 +52,40 @@
                 <input asp-for="Conductor" class="form-control" />
                 <span asp-validation-for="Conductor" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                List<SacramentPlanner.Models.Speaker> speakers = ViewBag.Speaker;
+
+                                foreach (var speaker in speakers)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        @*<input type="checkbox"
+                                               name="selectedSpeakers"
+                                               value="@speaker.ID"
+                                               @(Html.Raw(speaker.ID ? "checked=\"checked\"" : "")) />*@
+                                        @speaker.ID @:  @speaker.name
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
     </div>
 </div>
 
